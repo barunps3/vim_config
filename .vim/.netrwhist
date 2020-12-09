@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/etc/nginx/conf.d'
+let g:netrw_dirhist_2='/home/barun'
+let g:netrw_dirhist_1='/home/barun/.ssh'
