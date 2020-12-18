@@ -14,10 +14,13 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-markdown'
+Plugin 'Yggdroot/indentLine'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
-
+filetype plugin on
+filetype plugin indent on
+autocmd FileType yml,yaml setlocal ts=2 sts=2 sw=2 expandtab
 " Space + g for seeing the go ot definitions
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -27,16 +30,18 @@ let python_highlight_all=1
 syntax on
 
 " Set Auto-indent
-set autoindent
+" set smartindent
 
 " Set Line Numbering
 set number
 
 " Colorscheme
 colorscheme sublimemonokai
-
+let g:sublimemonokai_term_italic = 1
 " Set encoding
 set encoding=utf-8
+" Set indentline
+let g:indentLine_char = '⦙'
 
 " Set splitting 
 set splitbelow
