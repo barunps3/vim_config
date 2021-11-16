@@ -7,12 +7,13 @@ parse_git_branch() {
 }
     
 # TERMINAL PROMPT    
-PS1="\[\e[0;93m\]\u\[\e[m\]"    # username    
-PS1+=" " #space    
-PS1+="\[\e[0;95m\]\W\[\e[m\]"    # current directory    
+PS1="\e[0;93m\u\e[m"
 PS1+=" " # space    
-PS1+="\[\e[91m\]\$(parse_git_branch)\[\e[00m\]" # git branch
-PS1+="$ " # end prompt    
+PS1+="\e[0;95m\w\e[m"
+PS1+=" " # space    
+PS1+="\e[0;36m\$(parse_git_branch)\e[m"
+PS1+="$"
+PS1+=" " # space    
 export PS1; 
 
 
@@ -22,11 +23,11 @@ alias d=docker
 alias v=vim
 alias nv=nvim
 
-# SETUP PROXY WITH VPN
-#httpProxyServer=http://127.0.0.1:9000
-#httpsProxyServer=http://127.0.0.1:9000
-#
-#export http_proxy=$httpProxyServer
-#export https_proxy=$httpsProxyServer
-#export HTTP_PROXY=$httpProxyServer
-#export HTTPS_PROXY=$httpsProxyServer
+
+httpProxyServer=http://127.0.0.1:9000
+httpsProxyServer=http://127.0.0.1:9000
+
+export http_proxy=$httpProxyServer
+export https_proxy=$httpsProxyServer
+export HTTP_PROXY=$httpProxyServer
+export HTTPS_PROXY=$httpsProxyServer
