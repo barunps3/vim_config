@@ -40,6 +40,12 @@
             ]
         },
         {
+            "before": ["<leader>", "i"],
+            "commands": [
+                "editor.action.showDefinitionPreviewHover"
+            ]
+        },
+        {
             "before": ["<C-d>", "z", "z"],
             "after": ["<C-d>"]
         },
@@ -52,13 +58,25 @@
             "after": ["d", "i", "["]
         },
         {
-            "before": ["c", "c"],
+            "before": ["<leader>", "c"],
             "after": ["~"],
         }
     ],
     "vim.commandLineModeKeyBindings": [
     ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "c"],
+            "after": ["~"],
+        }
+    ],
     "editor.lineNumbers": "relative",
     "vim.commandLineModeKeyBindingsNonRecursive": [
-    ]
+    ],
+    "editor.tabCompletion": "on",
+    "javascript.format.semicolons": "insert",
+    "[javascript]": {
+    },
+    "vim.insertModeKeyBindingsNonRecursive": [
+    ],
 }
