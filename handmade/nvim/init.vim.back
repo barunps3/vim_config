@@ -1,5 +1,0 @@
-set nu
-set history=50
-set ignorecase
-set cursorline
-set relativenumber
