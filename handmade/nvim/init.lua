@@ -7,23 +7,29 @@ vim.opt.relativenumber = true
 vim.opt.ignorecase = true
 vim.opt.list = true --display listchars
 vim.opt.listchars = {
-		tab = "  ",
-		trail = "-",
-		nbsp = "+"
+	tab = "| ",
+	trail = "-",
+	nbsp = "+"
 }
 
 -- Colorscheme
 vim.cmd.colorscheme("default")
 
 -- Keybindings
+-- special keymaps
 vim.g.mapleader = " "
-vim.keymap.set('n', 'noh', ':nohls<CR>')
 vim.keymap.set('n', '<Leader>w', ':w<CR>')
-vim.keymap.set('n', 'S', '5j')
-vim.keymap.set('n', 'W', '5k')
 vim.keymap.set('n', '<Leader><Backspace>', ':Rex<CR>')
 vim.keymap.set('n', '<Leader>f', ':edit .<CR>')
+
+-- change setting keymaps
+vim.keymap.set('n', 'noh', ':nohls<CR>')
 vim.keymap.set('n', 'rnu', ':set rnu!<CR>')
+
+-- motion keymaps
+vim.keymap.set({'n', 'v'}, 'S', '5j')
+vim.keymap.set({'n', 'v'}, 'W', '5k')
+
 
 -- Highlight trailing spaces
 -- vim.cmd("match TrailingSpace /\\s\\+$/")
