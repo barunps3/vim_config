@@ -19,9 +19,8 @@ vim.keymap.set('n', '<Leader><Backspace>', ':Rex<CR>')
 vim.keymap.set('n', '<Leader>f', ':edit .<CR>')
 vim.keymap.set('n', 'rnu', ':set rnu!<CR>')
 
-function sleep(seconds)
-    os.execute("sleep " .. tonumber(seconds))
-end
+vim.api.nvim_command("match TrailingSpace /\\s\\+$/")
+vim.api.nvim_command("highlight TrailingSpace ctermbg=red guibg=red")  
 
 -- Autocommands
 -- Before writing the file
@@ -32,3 +31,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.cmd("%s/\\s\\+$//e")
   end
 })
+
+
+
+
