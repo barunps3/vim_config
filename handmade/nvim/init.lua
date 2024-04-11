@@ -5,6 +5,12 @@ vim.opt.history = 50
 vim.opt.cursorline = true
 vim.opt.relativenumber = true
 vim.opt.ignorecase = true
+vim.opt.list = true --display listchars
+vim.opt.listchars = {
+		tab = "  ",
+		trail = "-",
+		nbsp = "+"
+}
 
 -- Colorscheme
 vim.cmd.colorscheme("default")
@@ -19,8 +25,9 @@ vim.keymap.set('n', '<Leader><Backspace>', ':Rex<CR>')
 vim.keymap.set('n', '<Leader>f', ':edit .<CR>')
 vim.keymap.set('n', 'rnu', ':set rnu!<CR>')
 
-vim.api.nvim_command("match TrailingSpace /\\s\\+$/")
-vim.api.nvim_command("highlight TrailingSpace ctermbg=red guibg=red")  
+-- Highlight trailing spaces
+-- vim.cmd("match TrailingSpace /\\s\\+$/")
+-- vim.cmd("highlight TrailingSpace ctermbg=red guibg=red")
 
 -- Autocommands
 -- Before writing the file
@@ -31,7 +38,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.cmd("%s/\\s\\+$//e")
   end
 })
-
-
-
-
