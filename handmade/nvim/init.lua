@@ -52,33 +52,29 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist)
 
--- Configure Language Servers
-vim.lsp.set_log_level("debug")
---local lspConfig = require('lspconfig')
---lspconfig.pyright.setup{}
-vim.lsp.start({
-  name = "pyright",
-  cmd = { "pyright-langserver", "--stdio" },
-  root_dir = vim.fs.dirname(vim.fs.find({
-    'pyproject.toml', 'setup.py', 'requirements.txt'}, { upward = true })[1]),
-})
 
---vim.cmd("verbose au")
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
+-- Language Servers are configured in ftplugin/ folder
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(args)
     -- Enable completion triggered by <c-x><c-o>
     local bufnr = args.buf
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    print("client id")
     if client.server_capabilities.completionProvider then
       vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-      print("omnifunc attached")
+      --print("in if function")
+      --print(tostring(vim.bo[bufnr].omnifunc))
     end
+    --print("out of if function")
     if client.server_capabilities.definitionProvider then
       vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
     end
-
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = args.buf }
