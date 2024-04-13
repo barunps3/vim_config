@@ -17,5 +17,7 @@ return require('packer').startup(function(use)
       {'BurntSushi/ripgrep'}
     }
   }
+  -- Neovim lspconfig
+  use 'neovim/nvim-lspconfig'
 
 end)

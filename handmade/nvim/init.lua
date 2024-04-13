@@ -38,7 +38,6 @@ vim.keymap.set({'n', 'v'}, 'W', '5k')
 -- Plugins
 require("plugins")
 
--- Highlight trailing spaces
 -- vim.cmd("match TrailingSpace /\\s\\+$/")
 -- vim.cmd("highlight TrailingSpace ctermbg=red guibg=red")
 
@@ -59,7 +58,12 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist)
 
--- Language Servers are configured in ftplugin/ folder
+-- Configure Language Servers
+require('plugins')
+local lspconfig = require('lspconfig')
+lspconfig.pyright.setup{}
+lspconfig.lua_ls.setup{}
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(args)
@@ -68,13 +72,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if client.server_capabilities.completionProvider then
       vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-      --print("in if function")
-      --print(tostring(vim.bo[bufnr].omnifunc))
     end
-    --print("out of if function")
     if client.server_capabilities.definitionProvider then
       vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
     end
+
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = args.buf }
