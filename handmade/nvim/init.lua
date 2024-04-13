@@ -5,15 +5,20 @@ vim.opt.history = 50
 vim.opt.cursorline = true
 vim.opt.relativenumber = true
 vim.opt.ignorecase = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 8
+vim.opt.softtabstop = 2
+vim.opt.expandtab = false
+vim.opt.swapfile = false
 vim.opt.list = true --display listchars
 vim.opt.listchars = {
-	tab = "| ",
-	trail = "-",
-	nbsp = "+"
+  tab = "| ",
+  trail = "-",
+  nbsp = "+"
 }
 
 -- Colorscheme
-vim.cmd.colorscheme("default")
+vim.cmd.colorscheme("myslate")
 
 -- Keybindings
 -- special keymaps
@@ -30,6 +35,8 @@ vim.keymap.set('n', 'rnu', ':set rnu!<CR>')
 vim.keymap.set({'n', 'v'}, 'S', '5j')
 vim.keymap.set({'n', 'v'}, 'W', '5k')
 
+-- Plugins
+require("plugins")
 
 -- Highlight trailing spaces
 -- vim.cmd("match TrailingSpace /\\s\\+$/")
