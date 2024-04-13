@@ -8,4 +8,14 @@ print(string.format("Python Project Dir:%s", root_dirname))
 vim.lsp.start({
     name = "pyright",
     cmd = { "pyright-langserver", "--stdio" },
-    root_dir = root_dirname})
+    root_dir = root_dirname,
+    settings = {
+      python = {
+        analysis = {
+          autoSearchPaths = true,
+          useLibraryCodeForTypes = true,
+          diagnosticMode = 'openFilesOnly',
+        },
+      },
+    }
+})
