@@ -5,15 +5,20 @@ vim.opt.history = 50
 vim.opt.cursorline = true
 vim.opt.relativenumber = true
 vim.opt.ignorecase = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 8
+vim.opt.softtabstop = 2
+vim.opt.expandtab = false
+vim.opt.swapfile = false
 vim.opt.list = true --display listchars
 vim.opt.listchars = {
-	tab = "| ",
-	trail = "-",
-	nbsp = "+"
+  tab = "| ",
+  trail = "-",
+  nbsp = "+"
 }
 
 -- Colorscheme
-vim.cmd.colorscheme("default")
+vim.cmd.colorscheme("myslate")
 
 -- Keybindings
 -- special keymaps
@@ -30,6 +35,8 @@ vim.keymap.set('n', 'rnu', ':set rnu!<CR>')
 vim.keymap.set({'n', 'v'}, 'S', '5j')
 vim.keymap.set({'n', 'v'}, 'W', '5k')
 
+-- Plugins
+require("plugins")
 
 -- Highlight trailing spaces
 -- vim.cmd("match TrailingSpace /\\s\\+$/")
@@ -43,4 +50,50 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function()
     vim.cmd("%s/\\s\\+$//e")
   end
+})
+
+
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist)
+
+-- Language Servers are configured in ftplugin/ folder
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(args)
+    -- Enable completion triggered by <c-x><c-o>
+    local bufnr = args.buf
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client.server_capabilities.completionProvider then
+      vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+      --print("in if function")
+      --print(tostring(vim.bo[bufnr].omnifunc))
+    end
+    --print("out of if function")
+    if client.server_capabilities.definitionProvider then
+      vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
+    end
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = args.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
 })
