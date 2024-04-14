@@ -22,10 +22,10 @@ vim.cmd.colorscheme("myslate")
 
 -- Keybindings
 -- special keymaps
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
 vim.keymap.set('n', '<Leader>w', ':w<CR>')
-vim.keymap.set('n', '<Leader><Backspace>', ':Rex<CR>')
-vim.keymap.set('n', '<Leader>f', ':edit .<CR>')
+vim.keymap.set('n', '<Leader>z', ':Explore<CR>')
+vim.keymap.set('n', '<Leader><Backspace>', ':Rexplore<CR>')
 
 -- change setting keymaps
 vim.keymap.set('n', 'noh', ':nohls<CR>')
