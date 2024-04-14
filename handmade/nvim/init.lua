@@ -55,6 +55,11 @@ vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist)
 require('plugins')
 local lspconfig = require('lspconfig')
 lspconfig.pyright.setup{}
+
+vim.cmd [[ autocmd BufNewFile,BufRead *.bicep set filetype=bicep ]]
+lspconfig.bicep.setup{
+	cmd = {"dotnet", "/Users/fixcgi6/.config/nvim/langserver/bicep-langserver/Bicep.LangServer.dll"},
+}
 lspconfig.lua_ls.setup{}
 
 vim.api.nvim_create_autocmd('LspAttach', {
