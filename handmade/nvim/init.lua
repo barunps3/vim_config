@@ -35,6 +35,10 @@ vim.keymap.set('n', 'rnu', ':set rnu!<CR>')
 vim.keymap.set({'n', 'v'}, 'S', '5j')
 vim.keymap.set({'n', 'v'}, 'W', '5k')
 
+-- Control Buffers
+vim.keymap.set({'n'}, 'cql', ':cclose<CR>')
+vim.keymap.set({'n'}, 'cll', ':lclose<CR>')
+
 -- Plugins
 require("plugins")
 
@@ -58,6 +62,9 @@ vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist)
+vim.diagnostic.config({
+  virtual_text = false,
+})
 
 -- Language Servers are configured in ftplugin/ folder
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -75,7 +82,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if client.server_capabilities.definitionProvider then
       vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
     end
-    -- Buffer local mappings.
+
+-- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = args.buf }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
@@ -95,5 +103,23 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<space>f', function()
       vim.lsp.buf.format { async = true }
     end, opts)
+
+  -- Show diagnostic logs in hover window
+  -- note: this setting is global and should be set only once
+  vim.o.updatetime = 250
+  --vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+  --  group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
+  --  callback = function ()
+  --    vim.diagnostic.open_float(nil, {focus=false})
+  --  end
+  --})
+
+  --vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+  --group = vim.api.nvim_create_augroup("float_diagnostic_cursor", { clear = true }),
+  --  callback = function ()
+  --    vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})
+  --  end
+  --})
+
   end,
 })
