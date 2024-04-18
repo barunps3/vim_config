@@ -61,7 +61,9 @@ hi CursorLineNr guifg=NONE guibg=#333333 gui=NONE cterm=NONE
 hi Visual guifg=#d7d787 guibg=#5f8700 gui=NONE cterm=NONE
 hi SignColumn guifg=NONE guibg=#262626 gui=NONE cterm=NONE
 hi VisualNOS guifg=#d7d787 guibg=#5f8700 gui=NONE cterm=NONE
-hi LineNr guifg=#666666 guibg=NONE gui=NONE cterm=NONE
+" Making LineNr brighter
+"hi LineNr guifg=#666666 guibg=NONE gui=NONE cterm=NONE
+hi LineNr guifg=#c0c0c0 guibg=NONE gui=NONE cterm=NONE
 hi Error guifg=#ff0000 guibg=#ffffff gui=reverse cterm=reverse
 hi ErrorMsg guifg=#ff0000 guibg=#000000 gui=reverse cterm=reverse
 hi ModeMsg guifg=#262626 guibg=#ffd700 gui=NONE cterm=NONE
@@ -80,7 +82,9 @@ hi SpellBad guifg=#ff0000 guibg=NONE guisp=#ff0000 gui=undercurl cterm=underline
 hi SpellCap guifg=#ffff00 guibg=NONE guisp=#ffff00 gui=undercurl cterm=underline
 hi SpellLocal guifg=#ffafaf guibg=NONE guisp=#ffafaf gui=undercurl cterm=underline
 hi SpellRare guifg=#ffd7af guibg=NONE guisp=#ffd7af gui=undercurl cterm=underline
-hi Comment guifg=#666666 guibg=NONE gui=NONE cterm=NONE
+" Making comments brighter
+"hi Comment guifg=#666666 guibg=NONE gui=NONE cterm=NONE
+hi Comment guifg=#c0c0c0 guibg=NONE gui=NONE cterm=NONE
 hi String guifg=#87d7ff guibg=NONE gui=NONE cterm=NONE
 hi Identifier guifg=#ff8787 guibg=NONE gui=NONE cterm=NONE
 hi Function guifg=#ffd7af guibg=NONE gui=NONE cterm=NONE
@@ -138,8 +142,7 @@ if s:t_Co >= 256
   hi Visual ctermfg=186 ctermbg=64 cterm=NONE
   hi SignColumn ctermfg=NONE ctermbg=235 cterm=NONE
   hi VisualNOS ctermfg=186 ctermbg=64 cterm=NONE
-  " Making LineNr brighter
-  hi LineNr ctermfg=241 ctermbg=NONE guifg=#c0c0c0 term=NONE
+  hi LineNr ctermfg=241 ctermbg=NONE term=NONE
   hi Error ctermfg=196 ctermbg=231 cterm=reverse
   hi ErrorMsg ctermfg=196 ctermbg=16 cterm=reverse
   hi ModeMsg ctermfg=235 ctermbg=220 cterm=NONE
@@ -156,8 +159,7 @@ if s:t_Co >= 256
   hi SpellCap ctermfg=226 ctermbg=NONE cterm=underline
   hi SpellLocal ctermfg=217 ctermbg=NONE cterm=underline
   hi SpellRare ctermfg=223 ctermbg=NONE cterm=underline
-  " Making comments brighter
-  hi Comment ctermfg=241 ctermbg=NONE guifg=#c0c0c0 cterm=NONE
+  hi Comment ctermfg=241 ctermbg=NONE cterm=NONE
   hi String ctermfg=117 ctermbg=NONE cterm=NONE
   hi Identifier ctermfg=210 ctermbg=NONE cterm=NONE
   hi Function ctermfg=223 ctermbg=NONE cterm=NONE
