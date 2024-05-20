@@ -26,6 +26,12 @@ vim.g.mapleader = ' '
 vim.keymap.set('n', '<Leader>w', ':w<CR>')
 vim.keymap.set('n', '<Leader>z', ':Explore<CR>')
 vim.keymap.set('n', '<Leader><Backspace>', ':Rexplore<CR>')
+vim.keymap.set('i', '"', '""<left>', { noremap = true })
+vim.keymap.set('i', "'", "''<left>", { noremap = true })
+vim.keymap.set('i', '(', '()<left>', { noremap = true })
+vim.keymap.set('i', '[', '[]<left>', { noremap = true })
+vim.keymap.set('i', '{', '{}<left>', { noremap = true })
+vim.keymap.set('i', '{<CR>', '{}<left><CR><Esc>O', { noremap = true })
 
 -- change setting keymaps
 vim.keymap.set('n', 'noh', ':nohls<CR>')
