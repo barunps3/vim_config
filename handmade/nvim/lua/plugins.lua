@@ -18,8 +18,9 @@ return require('packer').startup(function(use)
     }
   }
 
---  use {'tpope/vim-fugitive'}
---
+  --  use {'tpope/vim-fugitive'}
+  use 'lewis6991/gitsigns.nvim'
+
   use {'hrsh7th/nvim-cmp',
     requires = {
       {'hrsh7th/cmp-buffer'},

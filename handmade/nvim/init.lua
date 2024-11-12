@@ -8,7 +8,7 @@ vim.opt.ignorecase = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 8
 vim.opt.softtabstop = 2
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 vim.opt.swapfile = false
 vim.opt.list = true --display listchars
 vim.opt.listchars = {
@@ -24,7 +24,7 @@ vim.cmd.colorscheme("myslate")
 -- special keymaps
 vim.g.mapleader = ' '
 vim.keymap.set('n', '<Leader>w', ':w<CR>')
-vim.keymap.set('n', '<Leader>z', ':Explore<CR>')
+vim.keymap.set('n', '<Leader>z', '<C-w>v:Explore<CR>')
 vim.keymap.set('n', '<Leader><Backspace>', ':Rexplore<CR>')
 vim.keymap.set('i', '"', '""<left>', { noremap = true })
 vim.keymap.set('i', "'", "''<left>", { noremap = true })

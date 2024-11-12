@@ -13,7 +13,7 @@ set background=dark
 set termguicolors
 
 " hi clear
-source $VIMRUNTIME/colors/default.vim " Nvim: revert to Vim default color scheme
+source $VIMRUNTIME/colors/vim.lua " Nvim: revert to Vim default color scheme
 let g:colors_name = 'myslate'
 
 let s:t_Co = &t_Co
